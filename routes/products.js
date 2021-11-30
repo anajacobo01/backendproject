@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
     await product.save();
     return res.status(201).json({ data: product })
   });
-  / Update a product by id put()
+  // Update a product by id put()
   router.put('/:id', async (req, res) => {
    const { body, params: { id } } = req;
    const product = await sequelize.models.products.findByPk(id);
