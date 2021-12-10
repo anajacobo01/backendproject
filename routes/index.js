@@ -1,9 +1,13 @@
 const express = require('express');
 const router = express.Router();
-
-//Adding routes handlers to 'notes' path
-router.use ('/notes', require('./notes'));
+const authenticate = require('../middlewares/authentication');
 
 //router.use ('/blog', require('./blogs'));
+router.use('/auth', require('./auth'));
 
- module.exports = router;
+router.use('/users', authenticate, require('./users'));
+router.use('/products', authenticate, require('./products'));
+router.use('/reviews', authenticate,  require('./reviews'));
+router.use('/orders', authenticate,  require('./orders'));
+
+module.exports = router;

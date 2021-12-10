@@ -1,0 +1,10 @@
+{
+    "development": {
+      "username": "ana",
+      "password": "mackbookana",
+      "database": "ecommerce_api",
+      "host": "127.0.0.1",
+      "port": "3306",
+      "dialect": "mariadb"
+    }
+  }

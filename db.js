@@ -1,20 +1,24 @@
-const {sequelize} = requiere ('sequelize');
-const Product = requiere('./models/Product');
-const Review = requiere ('./models/Review');
-const Orders = requiere('./models/Orders');
-const Users = requiere ('./models/Users');
-//Database connection 
-const sequelize = new Sequelize ('ecommerce_api', 'root', 'root',{
+const { Sequelize } = require('sequelize');
+
+// Importing models
+const Product = require('./models/Product');
+const Review = require('./models/Review');
+const User = require('./models/User');
+const Order = require('./models/Order');
+
+// Database connection
+const sequelize = new Sequelize('ecommerce_api', 'ana', 'mackbookana', {
     host: 'localhost',
-    dialect: 'mariadb', 
+    dialect: 'mariadb',
     logging: false,
-});
-// Getting models
-const models = [
+  });
+  
+  // Getting models
+  const models = [
     Product,
     Review,
-    Orders,
-    Users
+    User,
+    Order
   ];
 
   // Registering models into Sequelize
@@ -22,9 +26,16 @@ const models = [
     model(sequelize);
   }
 
-  //Configuring relations 
-const {products, reviews, Users, Orders, } = sequelize.models;
-// Relation one-to-one in reviews table 
-reviews.belongsTo(products)
+
+// Configuring relations
+
+const { products, reviews,  users, orders    } = sequelize.models;
+reviews.belongsTo(products); // Relation one-to-one in reviews table
+orders.belongsTo(users); // Relation: Order has one user
+orders.belongsTo(products); // Relation: Order has one product
+
+
+
 
 module.exports = sequelize;
+
