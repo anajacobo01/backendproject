@@ -20,7 +20,7 @@ app.use('/api', require('./routes'))
 app.listen(APP_PORT, () => {
     console.log(`Express on port ${APP_PORT}`);
     })
-
+// localhost:3002/api/auth/signup
 
 //Dummy data 
 
